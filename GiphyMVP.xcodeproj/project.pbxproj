@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11142C668E3884233EF55AD1 /* Pods_GiphyMVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */; };
 		822BEA7623725CEB009598F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEA7523725CEB009598F1 /* AppDelegate.swift */; };
 		822BEA7A23725CEB009598F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEA7923725CEB009598F1 /* ViewController.swift */; };
 		822BEA7D23725CEB009598F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822BEA7B23725CEB009598F1 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7EFDF60A1B1AEA649199E9CA /* Pods-GiphyMVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyMVP.release.xcconfig"; path = "Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP.release.xcconfig"; sourceTree = "<group>"; };
 		822BEA7223725CEB009598F1 /* GiphyMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiphyMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		822BEA7523725CEB009598F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		822BEA7923725CEB009598F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		822BEA9323725CEB009598F1 /* GiphyMVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiphyMVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		822BEA9723725CEB009598F1 /* GiphyMVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyMVPUITests.swift; sourceTree = "<group>"; };
 		822BEA9923725CEB009598F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyMVP.debug.xcconfig"; path = "Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP.debug.xcconfig"; sourceTree = "<group>"; };
+		DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphyMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11142C668E3884233EF55AD1 /* Pods_GiphyMVP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				822BEA8B23725CEB009598F1 /* GiphyMVPTests */,
 				822BEA9623725CEB009598F1 /* GiphyMVPUITests */,
 				822BEA7323725CEB009598F1 /* Products */,
+				ECB91D9E9C87D91601F6A311 /* Pods */,
+				D654C45597B929A144F2E0A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +196,23 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		D654C45597B929A144F2E0A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECB91D9E9C87D91601F6A311 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */,
+				7EFDF60A1B1AEA649199E9CA /* Pods-GiphyMVP.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 822BEA9C23725CEB009598F1 /* Build configuration list for PBXNativeTarget "GiphyMVP" */;
 			buildPhases = (
+				5C3E62D78CC31741978F134D /* [CP] Check Pods Manifest.lock */,
 				822BEA6E23725CEB009598F1 /* Sources */,
 				822BEA6F23725CEB009598F1 /* Frameworks */,
 				822BEA7023725CEB009598F1 /* Resources */,
+				1E484795ED67FF93EB6F71FD /* [CP] Embed Pods Frameworks */,
+				822BEAAD23728D2D009598F1 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -314,6 +341,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E484795ED67FF93EB6F71FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C3E62D78CC31741978F134D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GiphyMVP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		822BEAAD23728D2D009598F1 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/Pods/SwiftLint/swiftlint --config \"${SRCROOT}/.swiftlint.yml\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		822BEA6E23725CEB009598F1 /* Sources */ = {
@@ -492,6 +579,7 @@
 		};
 		822BEA9D23725CEB009598F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -511,6 +599,7 @@
 		};
 		822BEA9E23725CEB009598F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EFDF60A1B1AEA649199E9CA /* Pods-GiphyMVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
