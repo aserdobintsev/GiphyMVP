@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let window = UIWindow()
+        window.rootViewController = configure()
+        window.makeKeyAndVisible()
+        self.window = window
         return true
+    }
+
+    // Assembling of MVP
+    private func configure() -> UIViewController {
+        let model = GiphyService()
+        let view = GifsViewController.fromStoryboard()
+        let presenter = GifsPresenter(view: view, model: model)
+        view.presenter = presenter
+        return view
     }
 }
