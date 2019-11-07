@@ -8,11 +8,11 @@
 
 import UIKit
 
-class GifsViewController: UIViewController {
+class GifsListViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
-    var presenter: GifsViewPresenter!
+    var presenter: GifsListViewPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class GifsViewController: UIViewController {
     }
 }
 
-extension GifsViewController: GifsView {
+extension GifsListViewController: GifsListView {
     func startLoading() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
@@ -36,14 +36,14 @@ extension GifsViewController: GifsView {
     }
 }
 
-extension GifsViewController: UICollectionViewDelegate {
+extension GifsListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO show details
         print("selected \(indexPath.row)")
     }
 }
 
-extension GifsViewController: UICollectionViewDataSource {
+extension GifsListViewController: UICollectionViewDataSource {
     private var reuseIdentifier: String { "GifCellViewId" }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -65,7 +65,7 @@ extension GifsViewController: UICollectionViewDataSource {
     }
 }
 
-extension GifsViewController : UICollectionViewDelegateFlowLayout {
+extension GifsListViewController : UICollectionViewDelegateFlowLayout {
     private var itemsPerRow: CGFloat {
         // TODO: change deprecated statusBarOrientation property
         switch UIApplication.shared.statusBarOrientation {
@@ -75,40 +75,37 @@ extension GifsViewController : UICollectionViewDelegateFlowLayout {
             return 1
         }
     }
-    private var sectionInsets: UIEdgeInsets { UIEdgeInsets.zero }
-    //    private var sectionInsets: UIEdgeInsets { UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0) }
 
-  //1
+    private var sectionInsets: UIEdgeInsets { UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0) }
+
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     //2
     let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
     let availableWidth = view.frame.width - paddingSpace
-    let widthPerItem = availableWidth / itemsPerRow
+    let widthPerItem = view.frame.width / itemsPerRow
 
     return CGSize(width: widthPerItem, height: widthPerItem)
   }
 
-  //3
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
-    return sectionInsets
-  }
-
-  // 4
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return sectionInsets.left
-  }
+//  func collectionView(_ collectionView: UICollectionView,
+//                      layout collectionViewLayout: UICollectionViewLayout,
+//                      insetForSectionAt section: Int) -> UIEdgeInsets {
+//    return UIEdgeInsets.zero
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView,
+//                      layout collectionViewLayout: UICollectionViewLayout,
+//                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//    return 0
+//  }
 }
 
-extension GifsViewController {
-    static func fromStoryboard() -> GifsViewController {
-        guard let view = UIStoryboard(name: String(describing: GifsViewController.self),
-                                      bundle: Bundle.main).instantiateInitialViewController() as? GifsViewController
+extension GifsListViewController {
+    static func fromStoryboard() -> GifsListViewController {
+        guard let view = UIStoryboard(name: String(describing: GifsListViewController.self),
+                                      bundle: Bundle.main).instantiateInitialViewController() as? GifsListViewController
             else {
                 fatalError("""
 Can't load GifsViewController from storyboard,

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Gifs View Controller-->
+        <!--Gifs List View Controller-->
         <scene sceneID="o3j-at-XnU">
             <objects>
-                <viewController id="Sl9-00-kme" customClass="GifsViewController" customModule="GiphyMVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sl9-00-kme" customClass="GifsListViewController" customModule="GiphyMVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SaQ-cc-EzE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AN-A5-i4H" customClass="GifView" customModule="GiphyMVP" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="119" height="73"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -46,6 +46,7 @@
                                                 <constraint firstItem="0AN-A5-i4H" firstAttribute="width" secondItem="lZo-dQ-eHM" secondAttribute="width" id="zKx-1n-yq3"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="customSize" width="119" height="73"/>
                                         <connections>
                                             <outlet property="gifView" destination="0AN-A5-i4H" id="DfD-Eu-kWo"/>

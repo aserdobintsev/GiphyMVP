@@ -1,5 +1,5 @@
 //
-//  GifsViewPresenter.swift
+//  GifsView.swift
 //  GiphyMVP
 //
 //  Created by Alexander Serdobintsev on 11/6/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol GifsViewPresenter {
-    init(view: GifsView, model: GiphyService)
-    func getTrending()
-    var gifs: [Gif] { get }
+protocol GifsListView: class {
+    func startLoading()
+    func stopLoading()
+    func updateGifs()
 }

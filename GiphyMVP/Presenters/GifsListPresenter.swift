@@ -8,15 +8,15 @@
 
 import Foundation
 
-class GifsPresenter: GifsViewPresenter {
-    private  unowned let view: GifsView
+class GifsListPresenter: GifsListViewPresenter {
+    private  unowned let view: GifsListView
     private  let model: GiphyService
 
     var gifs = [Gif]()
 
     private var currentPage = 0
 
-    required init(view: GifsView, model: GiphyService) {
+    required init(view: GifsListView, model: GiphyService) {
         self.view = view
         self.model = model
     }

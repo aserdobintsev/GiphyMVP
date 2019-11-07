@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Assembling of MVP
     private func configure() -> UIViewController {
         let model = GiphyService()
-        let view = GifsViewController.fromStoryboard()
-        let presenter = GifsPresenter(view: view, model: model)
+        let view = GifsListViewController.fromStoryboard()
+        let presenter = GifsListPresenter(view: view, model: model)
         view.presenter = presenter
         return view
     }
