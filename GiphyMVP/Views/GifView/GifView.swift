@@ -9,9 +9,12 @@
 import UIKit
 
 class GifView: UIView {
+
     private let titleLabel = UILabel()
     private let gifImageView = UIImageView()
     private let favouriteButton = UIButton(type: .roundedRect)
+
+    var presenter: GifViewPresenter?
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -54,25 +57,33 @@ class GifView: UIView {
             gifImageView.bottomAnchor.constraint(lessThanOrEqualTo: favouriteButton.topAnchor),
             favouriteButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+        favouriteButton.addTarget(self, action: #selector(toggleFavourite), for: .touchUpInside)
     }
 
-    func configure(with gif: Gif) {
-        titleLabel.text = gif.title
-        DispatchQueue.global(qos: .default).async { [weak self] in
-            // TODO: add gif placeholder
-            guard let url = URL(string: gif.stillUrl) else {
-                return
-            }
-            guard let data = try? Data(contentsOf: url) else {
-                return
-            }
-            guard let image = UIImage(data: data) else {
-                return
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.gifImageView.image = image
-            }
+    @objc
+    private func toggleFavourite() {
+        self.presenter?.toggleFavourite()
+    }
+
+    func configure(with presenter: GifViewPresenter) {
+        self.presenter = presenter
+        presenter.load()
+    }
+}
+
+extension GifView: GifViewProtocol {
+    func setTitle(_ title: String) {
+        titleLabel.text = title
+    }
+
+    func setImageData(_ imageData: Data) {
+        guard let image = UIImage(data: imageData) else {
+            return
         }
+        gifImageView.image = image
     }
 
+    func setFavouritTitle(_ favouriteTitle: String) {
+        favouriteButton.setTitle(favouriteTitle, for: .normal)
+    }
 }

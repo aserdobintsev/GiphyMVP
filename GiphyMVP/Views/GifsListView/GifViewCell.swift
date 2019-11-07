@@ -14,6 +14,7 @@ class GifViewCell: UICollectionViewCell {
     @IBOutlet private weak var gifView: GifView!
 
     func configure(with gif: Gif) {
-        gifView.configure(with: gif)
+        let presenter = GifPresenter(view: gifView, gif: gif)
+        gifView.configure(with: presenter)
     }
 }

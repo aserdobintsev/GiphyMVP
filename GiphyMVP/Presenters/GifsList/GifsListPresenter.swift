@@ -9,8 +9,8 @@
 import Foundation
 
 class GifsListPresenter: GifsListViewPresenter {
-    private  unowned let view: GifsListView
-    private  let model: GiphyService
+    private unowned let view: GifsListView
+    private let model: GiphyService
 
     var gifs = [Gif]()
 

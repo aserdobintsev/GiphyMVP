@@ -11,5 +11,6 @@ import Foundation
 protocol GifsListViewPresenter {
     init(view: GifsListView, model: GiphyService)
     func getTrending()
+    func loadMore()
     var gifs: [Gif] { get }
 }

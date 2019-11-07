@@ -11,19 +11,22 @@ import UIKit
 class GifsListViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    private var footerRefreshControl: FooterRefreshControl?
 
     var presenter: GifsListViewPresenter!
     var refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurePullToRefresh()
         collectionView.delegate = self
         collectionView.dataSource = self
+        configurePullToRefresh()
+        configurePagination()
+
         presenter.getTrending()
     }
 
-    private func configurePullToRefresh(){
+    private func configurePullToRefresh() {
         self.collectionView.alwaysBounceVertical = true
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.addSubview(refreshControl)
@@ -33,6 +36,18 @@ class GifsListViewController: UIViewController {
     private func refreshData() {
         presenter.getTrending()
     }
+
+    private func configurePagination() {
+        let nibName = String(describing: FooterRefreshControl.self)
+        let nib = UINib(nibName: nibName, bundle: nil)
+        let kind = UICollectionView.elementKindSectionFooter
+        collectionView.register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: footerReuseIdentifier)
+    }
+}
+
+extension GifsListViewController {
+
+
 }
 
 extension GifsListViewController: GifsListView {
@@ -48,9 +63,50 @@ extension GifsListViewController: GifsListView {
         collectionView.reloadData()
     }
 
-    func startLoadMore() {}
+    func startLoadMore() {
+        self.footerRefreshControl?.startAnimate()
+    }
 
-    func stopLoadMore() {}
+    func stopLoadMore() {
+        self.footerRefreshControl?.stopAnimate()
+    }
+}
+
+extension GifsListViewController {
+    // Footer aniation logick
+
+    //compute the scroll value and play witht the threshold to get desired effect
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let threshold   = 100.0 ;
+        let contentOffset = scrollView.contentOffset.y;
+        let contentHeight = scrollView.contentSize.height;
+        let diffHeight = contentHeight - contentOffset;
+        let frameHeight = scrollView.bounds.size.height;
+        var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
+        triggerThreshold   =  min(triggerThreshold, 0.0)
+        let pullRatio  = min(abs(triggerThreshold),1.0);
+        self.footerRefreshControl?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
+        if pullRatio >= 1 {
+            self.footerRefreshControl?.animateFinal()
+        }
+        print("pullRation:\(pullRatio)")
+    }
+
+    //compute the offset and call the load method
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let diffHeight = contentHeight - contentOffset
+        let frameHeight = scrollView.bounds.size.height
+        let pullHeight  = abs(diffHeight - frameHeight)
+        print("pullHeight:\(pullHeight)")
+        if pullHeight == 0.0
+        {
+            if self.footerRefreshControl?.isAnimatingFinal ?? false {
+                presenter.loadMore()
+            }
+        }
+    }
 }
 
 extension GifsListViewController: UICollectionViewDelegate {
@@ -58,10 +114,24 @@ extension GifsListViewController: UICollectionViewDelegate {
         // TODO show details
         print("selected \(indexPath.row)")
     }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.footerRefreshControl?.prepareInitialAnimation()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            self.footerRefreshControl?.stopAnimate()
+        }
+    }
 }
 
 extension GifsListViewController: UICollectionViewDataSource {
     private var reuseIdentifier: String { "GifCellViewId" }
+
+    private var footerReuseIdentifier: String { "FooterRefreshControl" }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -79,6 +149,20 @@ extension GifsListViewController: UICollectionViewDataSource {
             cell.configure(with: presenter.gifs[indexPath.row])
         }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerReuseIdentifier, for: indexPath)
+            if let refresh = footerView as? FooterRefreshControl {
+                self.footerRefreshControl = refresh
+                self.footerRefreshControl?.backgroundColor = UIColor.clear
+            }
+            return footerView
+        } else {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerReuseIdentifier, for: indexPath)
+            return headerView
+        }
     }
 }
 
@@ -117,6 +201,14 @@ extension GifsListViewController : UICollectionViewDelegateFlowLayout {
 //                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 //    return 0
 //  }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        if isLoading {
+//            return CGSize.zero
+//        }
+        return CGSize(width: collectionView.bounds.size.width, height: 55)
+    }
+
 }
 
 extension GifsListViewController {
