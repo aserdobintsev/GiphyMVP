@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftGifOrigin
 
 class GifView: UIView {
 
@@ -67,7 +68,7 @@ class GifView: UIView {
 
     func configure(with presenter: GifViewPresenter) {
         self.presenter = presenter
-        presenter.load()
+        presenter.getData()
     }
 }
 
@@ -78,6 +79,13 @@ extension GifView: GifViewProtocol {
 
     func setImageData(_ imageData: Data) {
         guard let image = UIImage(data: imageData) else {
+            return
+        }
+        gifImageView.image = image
+    }
+
+    func setGifData(_ gifData: Data) {
+        guard let image = UIImage.gif(data: gifData) else {
             return
         }
         gifImageView.image = image

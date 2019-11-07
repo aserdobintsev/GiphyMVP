@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GifViewPresenter {
-    init(view: GifViewProtocol, gif: Gif)
-    func load()
+    init(view: GifViewProtocol, gif: Gif, toggleAction: @escaping (Gif) -> Void)
+    func getData()
     func toggleFavourite()
 }

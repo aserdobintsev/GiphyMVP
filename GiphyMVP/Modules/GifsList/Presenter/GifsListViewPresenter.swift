@@ -9,8 +9,9 @@
 import Foundation
 
 protocol GifsListViewPresenter {
-    init(view: GifsListView, model: GiphyService)
+    init(view: GifsListView, model: DataLayer, service: GiphyService)
     func getTrending()
     func loadMore()
+    func toggleFavourite(gif: Gif)
     var gifs: [Gif] { get }
 }

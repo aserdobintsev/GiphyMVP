@@ -10,6 +10,6 @@ import Foundation
 
 protocol GifViewProtocol: class {
     func setTitle(_ title: String)
-    func setImageData(_ imageData: Data)
+    func setGifData(_ gifData: Data)
     func setFavouritTitle(_ favouriteTitle: String)
 }

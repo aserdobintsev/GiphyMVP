@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Gif {
-    var id: String = ""
+class Gif: Object {
+    @objc dynamic var id: String = ""
     var favourite: Bool = false
     var title: String = ""
     var height: Int = 0

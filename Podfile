@@ -10,6 +10,7 @@ end
 def common_pods
     utils
     pod 'RealmSwift'
+    pod 'SwiftGifOrigin', '~> 1.7.0'
 end
 
 target 'GiphyMVP' do

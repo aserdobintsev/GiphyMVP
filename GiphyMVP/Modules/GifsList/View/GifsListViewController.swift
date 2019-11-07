@@ -146,7 +146,9 @@ extension GifsListViewController: UICollectionViewDataSource {
           .dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
         if let cell = cell as? GifViewCell {
-            cell.configure(with: presenter.gifs[indexPath.row])
+            cell.configure(with: self.presenter.gifs[indexPath.row]){ [weak self] gif in
+                self?.presenter.toggleFavourite(gif: gif)
+            }
         }
         return cell
     }

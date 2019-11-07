@@ -16,6 +16,13 @@ internal enum L10n {
     /// Проверьте соединение с интернетом и попробуйте еще раз
     internal static let networkError = L10n.tr("Localizable", "gifs.networkError")
   }
+
+  internal enum Gifview {
+    /// Add to favourites
+    internal static let addToFavourite = L10n.tr("Localizable", "gifview.addToFavourite")
+    /// Remove from favourites
+    internal static let removeFromFavourite = L10n.tr("Localizable", "gifview.removeFromFavourite")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

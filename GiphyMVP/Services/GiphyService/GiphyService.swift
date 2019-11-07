@@ -9,9 +9,6 @@
 import Foundation
 
 class GiphyService {
-    //private let apiUrl =
-    // "https://api.giphy.com/v1/gifs/search?api_key=sGuAouEARvFnKZUKZsmgT4Ae01L7A30u&q=ryan+gosling&limit=1"
-
     private let scheme = "https"
     private let host = "api.giphy.com"
     private let version = "/v1"
@@ -67,7 +64,7 @@ class GiphyService {
         apiCall(url: urlComponents.url, completionHandler: completionHandler)
     }
 
-    func trending(page: Int, completionHandler:@escaping ([GiphyGif]) -> Void) {
+    func getTrending(page: Int, completionHandler:@escaping ([GiphyGif]) -> Void) {
         let quertyItems = [
             URLQueryItem(name: "offset", value: String(page * perPage)),
             URLQueryItem(name: "limit", value: String(perPage))
