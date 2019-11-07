@@ -13,27 +13,44 @@ class GifsListViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
 
     var presenter: GifsListViewPresenter!
+    var refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configurePullToRefresh()
         collectionView.delegate = self
         collectionView.dataSource = self
+        presenter.getTrending()
+    }
+
+    private func configurePullToRefresh(){
+        self.collectionView.alwaysBounceVertical = true
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
+    }
+
+    @objc
+    private func refreshData() {
         presenter.getTrending()
     }
 }
 
 extension GifsListViewController: GifsListView {
-    func startLoading() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    func startRefresh() {
+        refreshControl.beginRefreshing()
     }
 
-    func stopLoading() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    func stopRefresh() {
+        refreshControl.endRefreshing()
     }
 
     func updateGifs() {
         collectionView.reloadData()
     }
+
+    func startLoadMore() {}
+
+    func stopLoadMore() {}
 }
 
 extension GifsListViewController: UICollectionViewDelegate {

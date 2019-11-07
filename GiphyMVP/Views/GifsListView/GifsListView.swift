@@ -9,7 +9,11 @@
 import Foundation
 
 protocol GifsListView: class {
-    func startLoading()
-    func stopLoading()
+    func startRefresh()
+    func stopRefresh()
+
+    func startLoadMore()
+    func stopLoadMore()
+
     func updateGifs()
 }

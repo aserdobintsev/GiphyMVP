@@ -23,26 +23,33 @@ class GifsListPresenter: GifsListViewPresenter {
 
     func getTrending() {
         currentPage = 0
-        loadTrending(with: currentPage)
+        view.startRefresh()
+        model.trending(page: currentPage) { [weak self] gyphs in
+            guard let self = self else {
+                return
+            }
+            self.gifs.removeAll()
+            self.gifs.append(contentsOf: self.toGifs(gyphs))
+            DispatchQueue.main.async { [weak self] in
+                self?.view.stopRefresh()
+                self?.view.updateGifs()
+            }
+        }
     }
 
     func loadMore() {
         currentPage += 1
-        loadTrending(with: currentPage)
-    }
-
-    private func loadTrending(with page: Int) {
-        view.startLoading()
-        model.trending(page: page) { [weak self] gyphs in
-            guard let self = self else {
-                return
-            }
-            self.gifs.append(contentsOf: self.toGifs(gyphs))
-            DispatchQueue.main.async { [weak self] in
-                self?.view.stopLoading()
-                self?.view.updateGifs()
-            }
-        }
+        view.startLoadMore()
+         model.trending(page: currentPage) { [weak self] gyphs in
+                   guard let self = self else {
+                       return
+                   }
+                   self.gifs.append(contentsOf: self.toGifs(gyphs))
+                   DispatchQueue.main.async { [weak self] in
+                       self?.view.stopLoadMore()
+                       self?.view.updateGifs()
+                   }
+               }
     }
 
     func toGifs(_ gyphyGifs: [GiphyGif]) -> [Gif] {
