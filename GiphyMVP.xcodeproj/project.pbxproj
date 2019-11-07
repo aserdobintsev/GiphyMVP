@@ -26,6 +26,8 @@
 		822BEAC22372D4BF009598F1 /* GifsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822BEAC12372D4BF009598F1 /* GifsViewController.storyboard */; };
 		822BEAC42372E2F8009598F1 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEAC32372E2F8009598F1 /* GifView.swift */; };
 		822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEAC52372E737009598F1 /* GifViewCell.swift */; };
+		827A81522373B5D600BCA47F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827A81512373B5D600BCA47F /* Localizable.strings */; };
+		827A81552373B74300BCA47F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A81542373B74300BCA47F /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		822BEAC12372D4BF009598F1 /* GifsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GifsViewController.storyboard; sourceTree = "<group>"; };
 		822BEAC32372E2F8009598F1 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		822BEAC52372E737009598F1 /* GifViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewCell.swift; sourceTree = "<group>"; };
+		827A81512373B5D600BCA47F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		827A81542373B74300BCA47F /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyMVP.debug.xcconfig"; path = "Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphyMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,7 +200,9 @@
 		822BEAA92372634E009598F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				827A81542373B74300BCA47F /* Strings.swift */,
 				822BEA7E23725CEB009598F1 /* Assets.xcassets */,
+				827A81512373B5D600BCA47F /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 				822BEA7023725CEB009598F1 /* Resources */,
 				1E484795ED67FF93EB6F71FD /* [CP] Embed Pods Frameworks */,
 				822BEAAD23728D2D009598F1 /* Swift Lint */,
+				827A81532373B6DA00BCA47F /* Swift Gen */,
 			);
 			buildRules = (
 			);
@@ -362,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822BEA8223725CEB009598F1 /* LaunchScreen.storyboard in Resources */,
+				827A81522373B5D600BCA47F /* Localizable.strings in Resources */,
 				822BEA7F23725CEB009598F1 /* Assets.xcassets in Resources */,
 				822BEAC22372D4BF009598F1 /* GifsViewController.storyboard in Resources */,
 			);
@@ -441,6 +449,24 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/Pods/SwiftLint/swiftlint --config \"${SRCROOT}/.swiftlint.yml\"\n";
 		};
+		827A81532373B6DA00BCA47F /* Swift Gen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Gen";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/Pods/SwiftGen/bin/swiftgen\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -454,6 +480,7 @@
 				822BEAB52372AFED009598F1 /* GiphyService.swift in Sources */,
 				822BEA7A23725CEB009598F1 /* GifsViewController.swift in Sources */,
 				822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */,
+				827A81552373B74300BCA47F /* Strings.swift in Sources */,
 				822BEAAF2372AA50009598F1 /* GifsView.swift in Sources */,
 				822BEABE2372B242009598F1 /* GiphyPagination.swift in Sources */,
 				822BEAB12372AAA4009598F1 /* GifsViewPresenter.swift in Sources */,

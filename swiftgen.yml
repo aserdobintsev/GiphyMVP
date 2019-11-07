@@ -1,0 +1,5 @@
+strings:
+  inputs: GiphyMVP/Resources/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: GiphyMVP/Resources/Strings.swift
