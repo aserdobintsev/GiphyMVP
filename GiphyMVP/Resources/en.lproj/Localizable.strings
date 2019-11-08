@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  GiphyMVP
+
+  Created by Alexander Serdobintsev on 11/7/19.
+  Copyright © 2019 Alexander Serdobintsev. All rights reserved.
+*/
+"gifs.networkError"="Check your internet connection and try again";
+"gifs.trending"="Trending GIFs";
+"gifview.addToFavourite"="Add to favourites";
+"gifview.removeFromFavourite"="Remove from favourites";

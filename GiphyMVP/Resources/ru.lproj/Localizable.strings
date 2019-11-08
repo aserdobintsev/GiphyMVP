@@ -6,5 +6,6 @@
   Copyright © 2019 Alexander Serdobintsev. All rights reserved.
 */
 "gifs.networkError"="Проверьте соединение с интернетом и попробуйте еще раз";
-"gifview.addToFavourite"="Add to favourites";
-"gifview.removeFromFavourite"="Remove from favourites";
+"gifs.trending"="Популярные GIFs";
+"gifview.addToFavourite"="Добавить в избранное";
+"gifview.removeFromFavourite"="Удалить из избранного";

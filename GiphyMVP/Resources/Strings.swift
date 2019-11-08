@@ -13,8 +13,10 @@ import Foundation
 internal enum L10n {
 
   internal enum Gifs {
-    /// Проверьте соединение с интернетом и попробуйте еще раз
+    /// Check your internet connection and try again
     internal static let networkError = L10n.tr("Localizable", "gifs.networkError")
+    /// Trending GIFs
+    internal static let trending = L10n.tr("Localizable", "gifs.trending")
   }
 
   internal enum Gifview {
