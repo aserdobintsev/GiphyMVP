@@ -32,13 +32,14 @@ class GifView: UIView {
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor)
         ])
     }
 
     private func addImage() {
         gifImageView.translatesAutoresizingMaskIntoConstraints = false
+        gifImageView.contentMode = .scaleAspectFit
         addSubview(gifImageView)
         NSLayoutConstraint.activate([
             gifImageView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor),
@@ -67,6 +68,7 @@ class GifView: UIView {
     }
 
     func configure(with presenter: GifViewPresenter) {
+        self.gifImageView.image = nil
         self.presenter = presenter
         presenter.getData()
     }
