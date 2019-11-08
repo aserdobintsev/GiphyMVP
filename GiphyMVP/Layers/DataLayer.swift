@@ -10,33 +10,20 @@ import Foundation
 import RealmSwift
 
 class DataLayer {
-    private let realmRead: Realm
-    private var realmWrite: Realm?
-    private let realmWriteQueue: DispatchQueue
+    private let realm: Realm
     init() throws {
-        realmRead = try Realm()
-
-        realmWriteQueue = DispatchQueue(label: "realm")
-        realmWriteQueue.async { [weak self] in
-            self?.realmWrite = try? Realm()
-        }
+        realm = try Realm()
     }
 
     func getUserProfile() -> UserProfile {
-        if let savedProfile = realmRead.objects(UserProfile.self).first {
+        if let savedProfile = realm.objects(UserProfile.self).first {
             return savedProfile
         }
         let userProfile = UserProfile()
-        save(with: userProfile)
-        return userProfile
-    }
-
-    private func save(with userProfile: UserProfile) {
-        realmWriteQueue.async { [weak self] in
-            try? self?.realmWrite?.write {
-                self?.realmWrite?.add(userProfile)
-            }
+        try? realm.write {
+            realm.add(userProfile)
         }
+        return userProfile
     }
 
     func performModify(object: Object, action: @escaping (Realm) -> Void) {
