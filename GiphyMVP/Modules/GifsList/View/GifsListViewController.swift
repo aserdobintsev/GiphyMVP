@@ -3,7 +3,7 @@
 //  GiphyMVP
 //
 //  Created by Alexander Serdobintsev on 11/6/19.
-//  Copyright © 2019 Alexander Serdobintsev. All rights reserved.
+//  Copyright © 2019 Alexander Serdobintsev.
 //
 
 import UIKit
@@ -161,7 +161,7 @@ extension GifsListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView
-          .dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+            .dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
         if let cell = cell as? GifViewCell {
             cell.configure(with: self.presenter.gifs[indexPath.row]) { [weak self] gif in
@@ -202,28 +202,22 @@ extension GifsListViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //2
-    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-    let availableWidth = view.frame.width - paddingSpace
-    let widthPerItem = collectionView.frame.width / itemsPerRow
-    print(widthPerItem)
-    return CGSize(width: widthPerItem, height: itemHeight)
-  }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //2
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = collectionView.frame.width / itemsPerRow
+        print(widthPerItem)
+        return CGSize(width: widthPerItem, height: itemHeight)
+    }
 
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets.zero
-  }
-//
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    return 0
-//  }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
