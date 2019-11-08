@@ -9,7 +9,6 @@
 import Foundation
 
 class TranslationLayer {
-    
     func toGifs(_ gyphyGifs: [GiphyGif]) -> [Gif] {
         return gyphyGifs.map { gyphy in
             let gif = Gif()

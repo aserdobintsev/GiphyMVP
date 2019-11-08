@@ -26,7 +26,6 @@
 		822BEAC22372D4BF009598F1 /* GifsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822BEAC12372D4BF009598F1 /* GifsListViewController.storyboard */; };
 		822BEAC42372E2F8009598F1 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEAC32372E2F8009598F1 /* GifView.swift */; };
 		822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEAC52372E737009598F1 /* GifViewCell.swift */; };
-		827A81522373B5D600BCA47F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827A81512373B5D600BCA47F /* Localizable.strings */; };
 		827A81552373B74300BCA47F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A81542373B74300BCA47F /* Strings.swift */; };
 		827A815D2373E6E300BCA47F /* FooterRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A815B2373E6E300BCA47F /* FooterRefreshControl.swift */; };
 		827A815E2373E6E300BCA47F /* FooterRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827A815C2373E6E300BCA47F /* FooterRefreshControl.xib */; };
@@ -36,6 +35,7 @@
 		827A81682374208500BCA47F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A81672374208500BCA47F /* UserProfile.swift */; };
 		827A816B237420FA00BCA47F /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A816A237420FA00BCA47F /* DataLayer.swift */; };
 		827A816D237424FF00BCA47F /* TranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A816C237424FF00BCA47F /* TranslationLayer.swift */; };
+		827A81762374FBA500BCA47F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827A81782374FBA500BCA47F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +81,6 @@
 		822BEAC12372D4BF009598F1 /* GifsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GifsListViewController.storyboard; sourceTree = "<group>"; };
 		822BEAC32372E2F8009598F1 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		822BEAC52372E737009598F1 /* GifViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewCell.swift; sourceTree = "<group>"; };
-		827A81512373B5D600BCA47F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		827A81542373B74300BCA47F /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		827A815B2373E6E300BCA47F /* FooterRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterRefreshControl.swift; sourceTree = "<group>"; };
 		827A815C2373E6E300BCA47F /* FooterRefreshControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterRefreshControl.xib; sourceTree = "<group>"; };
@@ -91,6 +90,8 @@
 		827A81672374208500BCA47F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		827A816A237420FA00BCA47F /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
 		827A816C237424FF00BCA47F /* TranslationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
+		827A81772374FBA500BCA47F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		827A81792374FBD600BCA47F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyMVP.debug.xcconfig"; path = "Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphyMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -198,7 +199,7 @@
 			children = (
 				827A81542373B74300BCA47F /* Strings.swift */,
 				822BEA7E23725CEB009598F1 /* Assets.xcassets */,
-				827A81512373B5D600BCA47F /* Localizable.strings */,
+				827A81782374FBA500BCA47F /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -422,6 +423,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 822BEA6923725CEB009598F1;
 			productRefGroup = 822BEA7323725CEB009598F1 /* Products */;
@@ -441,7 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822BEA8223725CEB009598F1 /* LaunchScreen.storyboard in Resources */,
-				827A81522373B5D600BCA47F /* Localizable.strings in Resources */,
+				827A81762374FBA500BCA47F /* Localizable.strings in Resources */,
 				827A815E2373E6E300BCA47F /* FooterRefreshControl.xib in Resources */,
 				822BEA7F23725CEB009598F1 /* Assets.xcassets in Resources */,
 				822BEAC22372D4BF009598F1 /* GifsListViewController.storyboard in Resources */,
@@ -611,6 +613,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		827A81782374FBA500BCA47F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				827A81772374FBA500BCA47F /* en */,
+				827A81792374FBD600BCA47F /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -618,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -678,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

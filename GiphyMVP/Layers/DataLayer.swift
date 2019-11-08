@@ -39,7 +39,7 @@ class DataLayer {
         }
     }
 
-    func performModify(object: Object,action: @escaping (Realm) -> Void) {
+    func performModify(object: Object, action: @escaping (Realm) -> Void) {
         if let realm = object.realm {
             try? realm.write {
                 action(realm)

@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum FooterRefreshState {
-    case loading
-    case error
-    case empty
-}
-
 class FooterRefreshControl: UICollectionReusableView {
 
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -30,13 +24,7 @@ class FooterRefreshControl: UICollectionReusableView {
         self.prepareInitialAnimation()
     }
 
-//    func configure(with state: FooterRefreshState) {
-//        activityIndicator.isHidden = state != .loading
-//        tryAgainButton.isHidden = state != .error
-//        tryAgainButton.setTitle("Tap here to try again", for: .normal)
-//    }
-
-    func setTransform(inTransform: CGAffineTransform, scaleFactor:CGFloat) {
+    func setTransform(inTransform: CGAffineTransform, scaleFactor: CGFloat) {
         if isAnimatingFinal {
             return
         }

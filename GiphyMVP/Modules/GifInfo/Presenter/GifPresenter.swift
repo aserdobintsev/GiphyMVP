@@ -26,7 +26,6 @@ class GifPresenter: GifViewPresenter {
     func getData() {
         view.setTitle(gif.title)
         view.setFavouritTitle(favouriteTitle)
-        // TODO: add gif placeholder
         loadGif()
     }
 
@@ -46,8 +45,5 @@ class GifPresenter: GifViewPresenter {
 
     func toggleFavourite() {
         toggleAction(gif)
-//        gif.favourite.toggle()
-//        view.setFavouritTitle(favouriteTitle)
-        // TODO save to Realm
     }
 }
