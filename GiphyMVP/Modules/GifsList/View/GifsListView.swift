@@ -16,4 +16,5 @@ protocol GifsListView: class {
     func stopLoadMore()
 
     func updateGifs()
+    func networkErrorOccured()
 }

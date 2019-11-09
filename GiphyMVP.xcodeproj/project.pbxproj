@@ -232,10 +232,10 @@
 			isa = PBXGroup;
 			children = (
 				822BEABB2372B1A7009598F1 /* GiphyGif.swift */,
+				822BEABF2372B262009598F1 /* GiphyMeta.swift */,
 				822BEABD2372B242009598F1 /* GiphyPagination.swift */,
 				822BEAB92372B08E009598F1 /* GiphyResponse.swift */,
 				822BEAB42372AFED009598F1 /* GiphyService.swift */,
-				822BEABF2372B262009598F1 /* GiphyMeta.swift */,
 			);
 			path = GiphyService;
 			sourceTree = "<group>";

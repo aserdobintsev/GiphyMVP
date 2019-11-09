@@ -78,19 +78,24 @@ class GifsListPresenter: GifsListViewPresenter {
 
         currentPage = 0
         view.startRefresh()
-        service.getTrending(page: currentPage) { [weak self] gyphs in
-            guard let self = self else {
-                return
-            }
-            self.gifs.removeAll()
-            DispatchQueue.main.async { [weak self] in
+        service.getTrending(page: currentPage) { result in
+            DispatchQueue.main.sync { [weak self] in
                 guard let self = self else {
                     return
                 }
-                self.gifs.append(contentsOf: self.translation.toGifs(gyphs))
-                self.syncFavourites()
                 self.view.stopRefresh()
+
+                switch result {
+                case .failure:
                 self.view.updateGifs()
+                self.view.networkErrorOccured()
+                case .success(let gyphs):
+                    self.gifs.removeAll()
+                    self.gifs.append(contentsOf: self.translation.toGifs(gyphs))
+                    self.syncFavourites()
+                    self.view.updateGifs()
+                }
+
             }
         }
     }
@@ -98,18 +103,21 @@ class GifsListPresenter: GifsListViewPresenter {
     func loadMore() {
         currentPage += 1
         view.startLoadMore()
-        service.getTrending(page: currentPage) { [weak self] gyphs in
-            guard let self = self else {
-                return
-            }
+        service.getTrending(page: currentPage) { result in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else {
                     return
                 }
-                self.gifs.append(contentsOf: self.translation.toGifs(gyphs))
-                self.syncFavourites()
                 self.view.stopLoadMore()
-                self.view.updateGifs()
+
+                switch result {
+                case .failure:
+                    self.view.networkErrorOccured()
+                case .success(let gyphs):
+                    self.gifs.append(contentsOf: self.translation.toGifs(gyphs))
+                    self.syncFavourites()
+                    self.view.updateGifs()
+                }
             }
         }
     }

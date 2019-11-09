@@ -5,7 +5,9 @@
   Created by Alexander Serdobintsev on 11/7/19.
   Copyright © 2019 Alexander Serdobintsev.
 */
-"gifs.networkError"="Check your internet connection and try again";
-"gifs.trending"="Trending GIFs";
-"gifview.addToFavourite"="Add to favourites";
-"gifview.removeFromFavourite"="Remove from favourites";
+"networkError.title"="Network error";
+"networkError.message"="Check your internet connection and try again";
+"networkError.ok"="Ok";
+"gifsList.trending"="Trending GIFs";
+"gifView.addToFavourite"="Add to favourites";
+"gifView.removeFromFavourite"="Remove from favourites";

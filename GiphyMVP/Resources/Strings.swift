@@ -12,18 +12,25 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
 
-  internal enum Gifs {
-    /// Check your internet connection and try again
-    internal static let networkError = L10n.tr("Localizable", "gifs.networkError")
-    /// Trending GIFs
-    internal static let trending = L10n.tr("Localizable", "gifs.trending")
+  internal enum GifView {
+    /// Add to favourites
+    internal static let addToFavourite = L10n.tr("Localizable", "gifView.addToFavourite")
+    /// Remove from favourites
+    internal static let removeFromFavourite = L10n.tr("Localizable", "gifView.removeFromFavourite")
   }
 
-  internal enum Gifview {
-    /// Add to favourites
-    internal static let addToFavourite = L10n.tr("Localizable", "gifview.addToFavourite")
-    /// Remove from favourites
-    internal static let removeFromFavourite = L10n.tr("Localizable", "gifview.removeFromFavourite")
+  internal enum GifsList {
+    /// Trending GIFs
+    internal static let trending = L10n.tr("Localizable", "gifsList.trending")
+  }
+
+  internal enum NetworkError {
+    /// Check your internet connection and try again
+    internal static let message = L10n.tr("Localizable", "networkError.message")
+    /// Ok
+    internal static let ok = L10n.tr("Localizable", "networkError.ok")
+    /// Network error
+    internal static let title = L10n.tr("Localizable", "networkError.title")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

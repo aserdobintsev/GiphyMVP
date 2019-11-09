@@ -20,7 +20,7 @@ class GifPresenter: GifViewPresenter {
     }
 
     private var favouriteTitle: String {
-        return gif.favourite ? L10n.Gifview.removeFromFavourite : L10n.Gifview.addToFavourite
+        return gif.favourite ? L10n.GifView.removeFromFavourite : L10n.GifView.addToFavourite
     }
 
     func getData() {

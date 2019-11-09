@@ -20,7 +20,7 @@ class GifsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = L10n.Gifs.trending
+        self.title = L10n.GifsList.trending
         updateItemSize()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -83,6 +83,15 @@ extension GifsListViewController: GifsListView {
     func stopLoadMore() {
         isLoadingMore = false
         footerRefreshControl?.stopAnimate()
+    }
+
+    func networkErrorOccured() {
+        let title = L10n.NetworkError.title
+        let message = L10n.NetworkError.message
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: L10n.NetworkError.ok, style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

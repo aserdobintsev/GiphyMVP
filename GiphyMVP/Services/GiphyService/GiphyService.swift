@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum GiphyServiceLoadResult {
+    case success([GiphyGif])
+    case failure
+}
+
 class GiphyService {
     private let scheme = "https"
     private let host = "api.giphy.com"
@@ -18,7 +23,7 @@ class GiphyService {
     private let trendingPath = "/gifs/trending"
     private let gifsPath = "/gifs"
 
-    private func apiCall(url: URL?, completionHandler:@escaping ([GiphyGif]) -> Void) {
+    private func apiCall(url: URL?, completionHandler:@escaping (GiphyServiceLoadResult) -> Void) {
         guard let url = url else {
             fatalError("URL can't be constructed")
         }
@@ -30,11 +35,16 @@ class GiphyService {
                 response.statusCode == 200,
                 let data = data
                 else {
-                    completionHandler([])
+                    completionHandler(.failure)
                     return
             }
-            let serviceResponse = try? JSONDecoder().decode(GiphyResponse.self, from: data)
-            completionHandler(serviceResponse?.data ?? [])
+            if let serviceResponse = try? JSONDecoder().decode(GiphyResponse.self, from: data) {
+                if serviceResponse.meta.status == 200 {
+                    completionHandler(.success(serviceResponse.data))
+                    return
+                }
+            }
+            completionHandler(.failure)
         }
         task.resume()
     }
@@ -51,7 +61,7 @@ class GiphyService {
         return urlComponents
     }
 
-    func search(query: String, page: Int, completionHandler:@escaping ([GiphyGif]) -> Void) {
+    func search(query: String, page: Int, completionHandler:@escaping (GiphyServiceLoadResult) -> Void) {
         let quertyItems = [
             URLQueryItem(name: "offset", value: String(page * perPage)),
             URLQueryItem(name: "limit", value: String(perPage)),
@@ -64,7 +74,7 @@ class GiphyService {
         apiCall(url: urlComponents.url, completionHandler: completionHandler)
     }
 
-    func getTrending(page: Int, completionHandler:@escaping ([GiphyGif]) -> Void) {
+    func getTrending(page: Int, completionHandler:@escaping (GiphyServiceLoadResult) -> Void) {
         let quertyItems = [
             URLQueryItem(name: "offset", value: String(page * perPage)),
             URLQueryItem(name: "limit", value: String(perPage))
@@ -75,7 +85,7 @@ class GiphyService {
         apiCall(url: urlComponents.url, completionHandler: completionHandler)
     }
 
-    func get(ids: [String], completionHandler:@escaping ([GiphyGif]) -> Void) {
+    func get(ids: [String], completionHandler:@escaping (GiphyServiceLoadResult) -> Void) {
         let comaJoined = ids.joined(separator: ",")
         let urlComponents = baseComponents(
             path: trendingPath,
