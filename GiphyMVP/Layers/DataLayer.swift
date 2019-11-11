@@ -11,19 +11,9 @@ import RealmSwift
 
 class DataLayer {
     private let realm: Realm
+
     init() throws {
         realm = try Realm()
-    }
-
-    func getUserProfile() -> UserProfile {
-        if let savedProfile = realm.objects(UserProfile.self).first {
-            return savedProfile
-        }
-        let userProfile = UserProfile()
-        try? realm.write {
-            realm.add(userProfile)
-        }
-        return userProfile
     }
 
     func performModify(object: Object, action: @escaping (Realm) -> Void) {
@@ -31,6 +21,12 @@ class DataLayer {
             try? realm.write {
                 action(realm)
             }
+        }
+    }
+
+    func save(with gifs: [Gif]) {
+        try? realm.write {
+            realm.add(gifs)
         }
     }
 }

@@ -11,10 +11,15 @@ import RealmSwift
 
 class Gif: Object {
     @objc dynamic var id: String = ""
-    var favourite: Bool = false
+    @objc dynamic var favourite: Bool = false
     var title: String = ""
     var height: Int = 0
     var width: Int = 0
     var url: String = ""
+    var gifData: NSData? = nil
     var stillUrl: String = ""
+
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
 }

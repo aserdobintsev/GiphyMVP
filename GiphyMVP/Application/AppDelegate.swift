@@ -28,10 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let model = try? DataLayer() else {
             fatalError()
         }
-
         let service = GiphyService()
+        let modelLayer = ModelLayer(service: service, dataLayer: model)
         let view = GifsListViewController.fromStoryboard()
-        let presenter = GifsListPresenter(view: view, model: model, service: service)
+        let presenter = GifsListPresenter(view: view, model: modelLayer)
         view.presenter = presenter
         return view
     }

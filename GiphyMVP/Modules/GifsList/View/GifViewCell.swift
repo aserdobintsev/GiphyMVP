@@ -13,8 +13,8 @@ class GifViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var gifView: GifView!
 
-    func configure(with gif: Gif, toggleAction: @escaping (Gif) -> Void) {
-        let presenter = GifPresenter(view: gifView, gif: gif, toggleAction: toggleAction)
+    func configure(with gif: Gif) {
+        let presenter = GifPresenter(view: gifView, gif: gif)
         gifView.configure(with: presenter)
     }
 }

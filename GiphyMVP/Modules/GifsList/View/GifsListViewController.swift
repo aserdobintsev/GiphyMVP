@@ -11,6 +11,7 @@ import UIKit
 class GifsListViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    private var gifs = [Gif]()
     private var footerRefreshControl: FooterRefreshControl?
 
     var presenter: GifsListViewPresenter!
@@ -69,9 +70,11 @@ extension GifsListViewController: GifsListView {
 
     func stopRefresh() {
         refreshControl.endRefreshing()
+        self.collectionView.setContentOffset(CGPoint.zero, animated: true)
     }
 
-    func updateGifs() {
+    func update(with gifs: [Gif]) {
+        self.gifs = gifs
         collectionView.reloadData()
     }
 
@@ -164,7 +167,7 @@ extension GifsListViewController: UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.gifs.count
+        return gifs.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -173,9 +176,7 @@ extension GifsListViewController: UICollectionViewDataSource {
             .dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
         if let cell = cell as? GifViewCell {
-            cell.configure(with: self.presenter.gifs[indexPath.row]) { [weak self] gif in
-                self?.presenter.toggleFavourite(gif: gif)
-            }
+            cell.configure(with: gifs[indexPath.row])
         }
         return cell
     }

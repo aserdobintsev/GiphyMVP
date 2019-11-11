@@ -7,16 +7,34 @@
 //
 
 import Foundation
+import RealmSwift
 
 class GifPresenter: GifViewPresenter {
-    private unowned let view: GifViewProtocol
+    private let view: GifViewProtocol?
     private let gif: Gif
-    private let toggleAction: (Gif) -> Void
 
-    required init(view: GifViewProtocol, gif: Gif, toggleAction: @escaping (Gif) -> Void) {
+    private var modelNotificationToken: NotificationToken?
+    private var isSubscribedToModel: Bool {
+        return modelNotificationToken != nil
+    }
+
+    required init(view: GifViewProtocol, gif: Gif) {
         self.view = view
         self.gif = gif
-        self.toggleAction = toggleAction
+    }
+
+    deinit {
+        modelNotificationToken?.invalidate()
+    }
+
+    private func onChange(change: ObjectChange) {
+        switch change {
+        case .change(_):
+            updateUI()
+        default:
+            // do nothing
+            break
+        }
     }
 
     private var favouriteTitle: String {
@@ -24,9 +42,21 @@ class GifPresenter: GifViewPresenter {
     }
 
     func getData() {
-        view.setTitle(gif.title)
-        view.setFavouritTitle(favouriteTitle)
+        if !isSubscribedToModel {
+            modelNotificationToken = gif.observe(self.onChange(change:))
+        }
+        updateUI()
         loadGif()
+    }
+
+    private func updateUI() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.view?.setTitle(self.gif.title)
+            self.view?.setFavouritTitle(self.favouriteTitle)
+        }
     }
 
     private func loadGif() {
@@ -38,12 +68,23 @@ class GifPresenter: GifViewPresenter {
                 return
             }
             DispatchQueue.main.async { [weak self] in
-                self?.view.setGifData(gifData)
+                self?.view?.setGifData(gifData)
             }
         }
     }
 
     func toggleFavourite() {
-        toggleAction(gif)
+        // TODO check saving
+        /*
+         model.performModify(object: profile) { [weak self] realm in
+             realm.add(gif)
+             self?.profile.favouriteGifs.append(gif)
+         }
+         */
+
+        //TODO realm exposure
+        try? gif.realm?.write {
+            gif.favourite.toggle()
+        }
     }
 }
