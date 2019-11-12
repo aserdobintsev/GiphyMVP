@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mpO-G0-SpS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Gif Detail View Controller-->
+        <scene sceneID="jwt-Fx-59p">
+            <objects>
+                <viewController id="mpO-G0-SpS" customClass="GifDetailViewController" customModule="GiphyMVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qd3-Q1-jRm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="AhA-VK-uYr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvX-Rv-D13" customClass="GifView" customModule="GiphyMVP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AhA-VK-uYr" firstAttribute="leading" secondItem="Erx-HC-WRj" secondAttribute="leading" id="PQr-0e-JMM"/>
+                            <constraint firstItem="AhA-VK-uYr" firstAttribute="top" secondItem="Erx-HC-WRj" secondAttribute="top" id="Rbo-wk-3Mg"/>
+                            <constraint firstItem="AhA-VK-uYr" firstAttribute="trailing" secondItem="Erx-HC-WRj" secondAttribute="trailing" id="eJc-Qk-BOt"/>
+                            <constraint firstItem="Erx-HC-WRj" firstAttribute="bottom" secondItem="AhA-VK-uYr" secondAttribute="bottom" id="l6b-xl-KVz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Erx-HC-WRj"/>
+                    </view>
+                    <connections>
+                        <outlet property="gifView" destination="rvX-Rv-D13" id="Wky-YV-yra"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9vq-we-1ZE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="79.710144927536234" y="-13.392857142857142"/>
+        </scene>
+    </scenes>
+</document>

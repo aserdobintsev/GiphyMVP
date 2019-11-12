@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class GifPresenter: GifViewPresenter {
-    private let view: GifViewProtocol?
+    private weak var view: GifViewProtocol?
     private let gif: Gif
 
     private var modelNotificationToken: NotificationToken?

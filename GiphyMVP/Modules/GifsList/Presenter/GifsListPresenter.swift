@@ -62,4 +62,13 @@ class GifsListPresenter: GifsListViewPresenter {
             }
         }
     }
+
+    func showDetails(for gif: Gif) {
+        // TODO: extract construction and navigation logic to Router/Coordinator
+        let view = GifDetailViewController.fromStoryboard()
+        let presenter = GifDetailPresenter(view: view, gif: gif)
+        view.presenter = presenter
+        // TODO: bad practice, temporarily here
+        (UIApplication.shared.delegate as? AppDelegate)?.show(view: view)
+    }
 }

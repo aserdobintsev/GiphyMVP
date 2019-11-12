@@ -26,6 +26,11 @@
 		822BEAC22372D4BF009598F1 /* GifsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822BEAC12372D4BF009598F1 /* GifsListViewController.storyboard */; };
 		822BEAC42372E2F8009598F1 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEAC32372E2F8009598F1 /* GifView.swift */; };
 		822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822BEAC52372E737009598F1 /* GifViewCell.swift */; };
+		824A7DEC237A3D6E00464397 /* GifDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A7DEB237A3D6E00464397 /* GifDetailPresenter.swift */; };
+		824A7DEE237A3D7A00464397 /* GifDetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A7DED237A3D7900464397 /* GifDetailViewPresenter.swift */; };
+		824A7DF2237A3DFF00464397 /* GifDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A7DF1237A3DFF00464397 /* GifDetailView.swift */; };
+		824A7DF4237A3E3600464397 /* GifDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A7DF3237A3E3500464397 /* GifDetailViewController.swift */; };
+		824A7DF6237A3E4400464397 /* GifDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 824A7DF5237A3E4400464397 /* GifDetailViewController.storyboard */; };
 		827A81552373B74300BCA47F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A81542373B74300BCA47F /* Strings.swift */; };
 		827A815D2373E6E300BCA47F /* FooterRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A815B2373E6E300BCA47F /* FooterRefreshControl.swift */; };
 		827A815E2373E6E300BCA47F /* FooterRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827A815C2373E6E300BCA47F /* FooterRefreshControl.xib */; };
@@ -81,6 +86,11 @@
 		822BEAC12372D4BF009598F1 /* GifsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GifsListViewController.storyboard; sourceTree = "<group>"; };
 		822BEAC32372E2F8009598F1 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		822BEAC52372E737009598F1 /* GifViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewCell.swift; sourceTree = "<group>"; };
+		824A7DEB237A3D6E00464397 /* GifDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailPresenter.swift; sourceTree = "<group>"; };
+		824A7DED237A3D7900464397 /* GifDetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewPresenter.swift; sourceTree = "<group>"; };
+		824A7DF1237A3DFF00464397 /* GifDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailView.swift; sourceTree = "<group>"; };
+		824A7DF3237A3E3500464397 /* GifDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewController.swift; sourceTree = "<group>"; };
+		824A7DF5237A3E4400464397 /* GifDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GifDetailViewController.storyboard; sourceTree = "<group>"; };
 		827A81542373B74300BCA47F /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		827A815B2373E6E300BCA47F /* FooterRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterRefreshControl.swift; sourceTree = "<group>"; };
 		827A815C2373E6E300BCA47F /* FooterRefreshControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterRefreshControl.xib; sourceTree = "<group>"; };
@@ -239,10 +249,39 @@
 			path = GiphyService;
 			sourceTree = "<group>";
 		};
+		824A7DEA237A3D0100464397 /* GifDetail */ = {
+			isa = PBXGroup;
+			children = (
+				824A7DF0237A3D8B00464397 /* View */,
+				824A7DEF237A3D8400464397 /* Presenter */,
+			);
+			path = GifDetail;
+			sourceTree = "<group>";
+		};
+		824A7DEF237A3D8400464397 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				824A7DEB237A3D6E00464397 /* GifDetailPresenter.swift */,
+				824A7DED237A3D7900464397 /* GifDetailViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		824A7DF0237A3D8B00464397 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				824A7DF1237A3DFF00464397 /* GifDetailView.swift */,
+				824A7DF3237A3E3500464397 /* GifDetailViewController.swift */,
+				824A7DF5237A3E4400464397 /* GifDetailViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		827A816E2374381900BCA47F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				827A81722374388000BCA47F /* GifInfo */,
+				824A7DEA237A3D0100464397 /* GifDetail */,
+				827A81722374388000BCA47F /* GifView */,
 				827A816F2374382600BCA47F /* GifsList */,
 			);
 			path = Modules;
@@ -279,13 +318,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		827A81722374388000BCA47F /* GifInfo */ = {
+		827A81722374388000BCA47F /* GifView */ = {
 			isa = PBXGroup;
 			children = (
 				827A8174237438DC00BCA47F /* Presenter */,
 				827A8173237438D700BCA47F /* View */,
 			);
-			path = GifInfo;
+			path = GifView;
 			sourceTree = "<group>";
 		};
 		827A8173237438D700BCA47F /* View */ = {
@@ -443,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822BEA8223725CEB009598F1 /* LaunchScreen.storyboard in Resources */,
+				824A7DF6237A3E4400464397 /* GifDetailViewController.storyboard in Resources */,
 				827A81762374FBA500BCA47F /* Localizable.strings in Resources */,
 				827A815E2373E6E300BCA47F /* FooterRefreshControl.xib in Resources */,
 				822BEA7F23725CEB009598F1 /* Assets.xcassets in Resources */,
@@ -553,16 +593,20 @@
 				827A816B237420FA00BCA47F /* DataLayer.swift in Sources */,
 				827A81642373FCDF00BCA47F /* GifPresenter.swift in Sources */,
 				822BEAC42372E2F8009598F1 /* GifView.swift in Sources */,
+				824A7DEE237A3D7A00464397 /* GifDetailViewPresenter.swift in Sources */,
 				827A81662373FD7800BCA47F /* GifViewProtocol.swift in Sources */,
 				827A816D237424FF00BCA47F /* TranslationLayer.swift in Sources */,
 				822BEAB32372AAF4009598F1 /* GifsListPresenter.swift in Sources */,
+				824A7DF4237A3E3600464397 /* GifDetailViewController.swift in Sources */,
 				822BEAB52372AFED009598F1 /* GiphyService.swift in Sources */,
 				822BEA7A23725CEB009598F1 /* GifsListViewController.swift in Sources */,
+				824A7DF2237A3DFF00464397 /* GifDetailView.swift in Sources */,
 				822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */,
 				827A815D2373E6E300BCA47F /* FooterRefreshControl.swift in Sources */,
 				827A81552373B74300BCA47F /* Strings.swift in Sources */,
 				822BEAAF2372AA50009598F1 /* GifsListView.swift in Sources */,
 				822BEABE2372B242009598F1 /* GiphyPagination.swift in Sources */,
+				824A7DEC237A3D6E00464397 /* GifDetailPresenter.swift in Sources */,
 				827A81622373FCD400BCA47F /* GifViewPresenter.swift in Sources */,
 				827A817B2378F4E100BCA47F /* ModelLayer.swift in Sources */,
 				822BEAB12372AAA4009598F1 /* GifsListViewPresenter.swift in Sources */,

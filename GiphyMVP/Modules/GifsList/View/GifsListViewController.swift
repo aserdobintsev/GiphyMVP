@@ -137,8 +137,7 @@ extension GifsListViewController {
 
 extension GifsListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO show details
-        print("selected \(indexPath.row)")
+        presenter.showDetails(for: gifs[indexPath.row])
     }
 
     func collectionView(_ collectionView: UICollectionView,

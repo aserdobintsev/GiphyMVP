@@ -12,4 +12,5 @@ protocol GifsListViewPresenter {
     init(view: GifsListView, model: ModelLayer)
     func getTrending()
     func loadMore()
+    func showDetails(for gif: Gif)
 }

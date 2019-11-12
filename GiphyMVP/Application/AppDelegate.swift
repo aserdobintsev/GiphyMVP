@@ -12,12 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationController: UINavigationController?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow()
 
-        let navigationController = UINavigationController(rootViewController: configure())
+        navigationController = UINavigationController(rootViewController: configure())
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
@@ -34,5 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let presenter = GifsListPresenter(view: view, model: modelLayer)
         view.presenter = presenter
         return view
+    }
+
+    func show(view: UIViewController) {
+        navigationController?.pushViewController(view, animated: true)
     }
 }
