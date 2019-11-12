@@ -3,7 +3,6 @@
 //  GiphyMVP
 //
 //  Created by Alexander Serdobintsev on 11/11/19.
-//  Copyright © 2019 Alexander Serdobintsev.
 //
 
 import Foundation
