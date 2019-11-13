@@ -22,26 +22,21 @@ class GifsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = L10n.GifsList.trending
-        updateItemSize()
         collectionView.delegate = self
         collectionView.dataSource = self
         configurePullToRefresh()
         configurePagination()
-
         presenter.getTrending()
     }
 
-    private func updateItemSize() {
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: view.bounds.width/itemsPerRow, height: itemHeight)
-        }
-    }
     private var sectionInsets: UIEdgeInsets { UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0) }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        updateItemSize()
-        collectionView.reloadData()
+        collectionView.performBatchUpdates({
+            collectionView.reloadData()
+        }, completion: nil)
+
     }
 
     private func configurePullToRefresh() {
@@ -214,11 +209,9 @@ extension GifsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //2
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = collectionView.frame.width / itemsPerRow
-        print(widthPerItem)
+
+        let paddingSpace = (sectionInsets.left + sectionInsets.right) * itemsPerRow
+        let widthPerItem = (collectionView.bounds.width - paddingSpace) / itemsPerRow
         return CGSize(width: widthPerItem, height: itemHeight)
     }
 
