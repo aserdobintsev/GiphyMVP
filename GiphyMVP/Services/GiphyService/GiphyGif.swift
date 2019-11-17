@@ -12,6 +12,7 @@ class GiphyGif: Decodable {
     var title: String
     var username: String
     var images: GiphyImages
+    var trending_datetime: String
 }
 
 class GiphyImages: Decodable {

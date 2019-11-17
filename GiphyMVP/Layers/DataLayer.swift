@@ -28,4 +28,8 @@ class DataLayer {
             realm.add(gifs)
         }
     }
+
+    func load() -> [Gif] {
+        return Array(realm.objects(Gif.self))
+    }
 }

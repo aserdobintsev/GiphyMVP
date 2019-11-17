@@ -231,17 +231,3 @@ extension GifsListViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
-
-extension GifsListViewController {
-    static func fromStoryboard() -> GifsListViewController {
-        guard let view = UIStoryboard(name: String(describing: GifsListViewController.self),
-                                      bundle: Bundle.main).instantiateInitialViewController() as? GifsListViewController
-            else {
-                fatalError("""
-Can't load GifsViewController from storyboard,
-check that controller is initial view controller
-""")
-        }
-        return view
-    }
-}

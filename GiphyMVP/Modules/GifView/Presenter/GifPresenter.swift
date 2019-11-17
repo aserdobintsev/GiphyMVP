@@ -45,7 +45,7 @@ class GifPresenter: GifViewPresenter {
             modelNotificationToken = gif.observe(self.onChange(change:))
         }
         updateUI()
-        loadGif()
+        updateGifData()
     }
 
     private func updateUI() {
@@ -58,17 +58,34 @@ class GifPresenter: GifViewPresenter {
         }
     }
 
+    private func updateGifData() {
+        guard let gifData = gif.gifData else {
+            loadGif()
+            return
+        }
+        self.view?.setGifData(gifData)
+    }
+
     private func loadGif() {
         guard let url = URL(string: gif.url) else {
             return
         }
-        DispatchQueue.global(qos: .default).async { [weak self] in
+        DispatchQueue.global(qos: .default).async {
             guard let gifData = try? Data(contentsOf: url) else {
                 return
             }
             DispatchQueue.main.async { [weak self] in
-                self?.view?.setGifData(gifData)
+                guard let self = self else { return }
+                self.saveGif(with:gifData)
+                self.view?.setGifData(gifData)
             }
+        }
+    }
+
+    private func saveGif(with data: Data) {
+        // TODO realm exposure
+        try? gif.realm?.write {
+            gif.gifData = data
         }
     }
 

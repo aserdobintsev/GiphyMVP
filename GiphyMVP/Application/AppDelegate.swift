@@ -16,24 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow()
-
-        navigationController = UINavigationController(rootViewController: configure())
+        let configurator = GifListConfigurator()
+        navigationController = UINavigationController(rootViewController: configurator.configure())
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
         return true
-    }
-
-    private func configure() -> UIViewController {
-        guard let model = try? DataLayer() else {
-            fatalError()
-        }
-        let service = GiphyService()
-        let modelLayer = ModelLayer(service: service, dataLayer: model)
-        let view = GifsListViewController.fromStoryboard()
-        let presenter = GifsListPresenter(view: view, model: modelLayer)
-        view.presenter = presenter
-        return view
     }
 
     func show(view: UIViewController) {

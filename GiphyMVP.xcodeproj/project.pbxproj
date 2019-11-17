@@ -41,6 +41,7 @@
 		827A816D237424FF00BCA47F /* TranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A816C237424FF00BCA47F /* TranslationLayer.swift */; };
 		827A81762374FBA500BCA47F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827A81782374FBA500BCA47F /* Localizable.strings */; };
 		827A817B2378F4E100BCA47F /* ModelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A817A2378F4E100BCA47F /* ModelLayer.swift */; };
+		82C80C5F2380FC2E002C3E71 /* GifListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C80C5E2380FC2E002C3E71 /* GifListConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		827A81772374FBA500BCA47F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		827A81792374FBD600BCA47F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		827A817A2378F4E100BCA47F /* ModelLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLayer.swift; sourceTree = "<group>"; };
+		82C80C5E2380FC2E002C3E71 /* GifListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifListConfigurator.swift; sourceTree = "<group>"; };
 		A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyMVP.debug.xcconfig"; path = "Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphyMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -290,6 +292,7 @@
 		827A816F2374382600BCA47F /* GifsList */ = {
 			isa = PBXGroup;
 			children = (
+				82C80C5E2380FC2E002C3E71 /* GifListConfigurator.swift */,
 				827A81712374384B00BCA47F /* View */,
 				827A81702374384200BCA47F /* Presenter */,
 			);
@@ -600,6 +603,7 @@
 				824A7DF4237A3E3600464397 /* GifDetailViewController.swift in Sources */,
 				822BEAB52372AFED009598F1 /* GiphyService.swift in Sources */,
 				822BEA7A23725CEB009598F1 /* GifsListViewController.swift in Sources */,
+				82C80C5F2380FC2E002C3E71 /* GifListConfigurator.swift in Sources */,
 				824A7DF2237A3DFF00464397 /* GifDetailView.swift in Sources */,
 				822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */,
 				827A815D2373E6E300BCA47F /* FooterRefreshControl.swift in Sources */,

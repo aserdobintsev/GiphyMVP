@@ -24,8 +24,7 @@ class ModelLayer {
     }
 
     func loadTrending(page: Int, completionHandler: @escaping (LoadResult) -> Void) {
-        //loadTrendingFromDB()
-        loadTrendingFromServer(page: page, completionHandler: completionHandler)
+        loadTrendingFromServer(page: page, completionHandler:  completionHandler)
     }
 
     func save(with gif: Gif) {
@@ -34,10 +33,6 @@ class ModelLayer {
                 
             })
         }
-    }
-
-    private func loadTrendingFromDB() {
-        
     }
 
     private func loadTrendingFromServer(page: Int, completionHandler: @escaping (LoadResult) -> Void) {
@@ -50,13 +45,39 @@ class ModelLayer {
                 case .failure:
                     completionHandler(.failure)
                 case .success(let gyphs):
-                    let gifs = self.translationLayer.toGifs(gyphs)
-                    self.dataLayer.save(with: gifs)
-                    completionHandler(.success(gifs))
+                    // save new
+                    let fromServer = self.translationLayer.toGifs(gyphs)
+                    self.saveNew(fromServer)
+
+                    let dbGifs = self.loadTrendingFromDB()
+                    .sorted(by:) { l, r in
+                        l.trending_datetime > r.trending_datetime
+                    }
+                    .filter { gif in
+                        return fromServer.contains(where:) { serverGif in
+                            return gif.id == serverGif.id
+                        }
+                    }
+                    completionHandler(.success(dbGifs))
                 }
             }
         }
     }
+
+    private func saveNew(_ serverGifs:[Gif]) {
+        let check = self.loadTrendingFromDB()
+        let gifs = serverGifs.filter { gif in
+            return !check.contains(where:) { dbgif in
+                return gif.id == dbgif.id
+            }
+        }
+        self.dataLayer.save(with: gifs)
+    }
+
+    private func loadTrendingFromDB() -> [Gif] {
+        return dataLayer.load()
+    }
+
 //   private func syncFavourites() {
 //        gifs.forEach { gif in
 //            gif.favourite = self.profile.isFavouritGif(gif: gif)
