@@ -11,20 +11,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navigationController: UINavigationController?
+    private var appCoordinator: AppCoordinator?
+    private var navigationController: UINavigationController?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = UIWindow()
-        let configurator = GifListConfigurator()
-        navigationController = UINavigationController(rootViewController: configurator.configure())
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-        self.window = window
+        appCoordinator = AppCoordinator()
+        appCoordinator?.start()
         return true
-    }
-
-    func show(view: UIViewController) {
-        navigationController?.pushViewController(view, animated: true)
     }
 }

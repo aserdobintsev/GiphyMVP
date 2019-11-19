@@ -25,17 +25,3 @@ extension GifDetailViewController: GifDetailView {
         gifView.configure(with: gifViewPresenter)
     }
 }
-
-extension GifDetailViewController {
-    static func fromStoryboard() -> GifDetailViewController {
-        guard let view = UIStoryboard(name: String(describing: GifDetailViewController.self),
-                                      bundle: Bundle.main).instantiateInitialViewController() as? GifDetailViewController
-            else {
-                fatalError("""
-Can't load GifDetailViewController from storyboard,
-check that controller is initial view controller
-""")
-        }
-        return view
-    }
-}

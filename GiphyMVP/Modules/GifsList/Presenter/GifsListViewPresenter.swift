@@ -7,9 +7,13 @@
 
 import Foundation
 
-protocol GifsListViewPresenter {
+protocol GifsListViewPresenter: class {
     init(view: GifsListView, model: ModelLayer)
     func getTrending()
     func loadMore()
     func showDetails(for gif: Gif)
+}
+
+protocol GifListPresenterDelegate: class {
+    func didSelect(gif: Gif)
 }

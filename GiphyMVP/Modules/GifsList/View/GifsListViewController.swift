@@ -5,7 +5,6 @@
 //  Created by Alexander Serdobintsev on 11/6/19.
 //
 
-
 import UIKit
 
 class GifsListViewController: UIViewController {
@@ -14,7 +13,7 @@ class GifsListViewController: UIViewController {
     private var gifs = [Gif]()
     private var footerRefreshControl: FooterRefreshControl?
 
-    var presenter: GifsListViewPresenter!
+    var presenter: GifsListViewPresenter?
     private var refreshControl = UIRefreshControl()
     private var isLoadingMore = false
     private var itemHeight: CGFloat = 250
@@ -26,7 +25,7 @@ class GifsListViewController: UIViewController {
         collectionView.dataSource = self
         configurePullToRefresh()
         configurePagination()
-        presenter.getTrending()
+        presenter?.getTrending()
     }
 
     private var sectionInsets: UIEdgeInsets { UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0) }
@@ -47,7 +46,7 @@ class GifsListViewController: UIViewController {
 
     @objc
     private func refreshData() {
-        presenter.getTrending()
+        presenter?.getTrending()
     }
 
     private func configurePagination() {
@@ -124,7 +123,7 @@ extension GifsListViewController {
         print("pullHeight:\(pullHeight)")
         if pullHeight == 0.0 {
             if self.footerRefreshControl?.isAnimatingFinal ?? false {
-                presenter.loadMore()
+                presenter?.loadMore()
             }
         }
     }
@@ -132,7 +131,7 @@ extension GifsListViewController {
 
 extension GifsListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.showDetails(for: gifs[indexPath.row])
+        presenter?.showDetails(for: gifs[indexPath.row])
     }
 
     func collectionView(_ collectionView: UICollectionView,

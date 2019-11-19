@@ -24,13 +24,13 @@ class ModelLayer {
     }
 
     func loadTrending(page: Int, completionHandler: @escaping (LoadResult) -> Void) {
-        loadTrendingFromServer(page: page, completionHandler:  completionHandler)
+        loadTrendingFromServer(page: page, completionHandler: completionHandler)
     }
 
     func save(with gif: Gif) {
         DispatchQueue.main.async { [weak self] in
             self?.dataLayer.performModify(object: gif, action: { realm in
-                
+                // TODO
             })
         }
     }
@@ -64,7 +64,7 @@ class ModelLayer {
         }
     }
 
-    private func saveNew(_ serverGifs:[Gif]) {
+    private func saveNew(_ serverGifs: [Gif]) {
         let check = self.loadTrendingFromDB()
         let gifs = serverGifs.filter { gif in
             return !check.contains(where:) { dbgif in

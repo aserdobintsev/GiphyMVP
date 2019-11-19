@@ -75,8 +75,10 @@ class GifPresenter: GifViewPresenter {
                 return
             }
             DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.saveGif(with:gifData)
+                guard let self = self else {
+                    return
+                }
+                self.saveGif(with: gifData)
                 self.view?.setGifData(gifData)
             }
         }

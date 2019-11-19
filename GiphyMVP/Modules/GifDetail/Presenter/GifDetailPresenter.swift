@@ -10,7 +10,7 @@ import Foundation
 class GifDetailPresenter: GifDetailViewPresenter {
     private unowned let view: GifDetailView
     private let gif: Gif
-    
+
     required init(view: GifDetailView, gif: Gif) {
         self.view = view
         self.gif = gif

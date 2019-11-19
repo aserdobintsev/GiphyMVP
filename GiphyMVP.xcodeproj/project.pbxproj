@@ -42,6 +42,10 @@
 		827A81762374FBA500BCA47F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827A81782374FBA500BCA47F /* Localizable.strings */; };
 		827A817B2378F4E100BCA47F /* ModelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A817A2378F4E100BCA47F /* ModelLayer.swift */; };
 		82C80C5F2380FC2E002C3E71 /* GifListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C80C5E2380FC2E002C3E71 /* GifListConfigurator.swift */; };
+		82C80CA723823361002C3E71 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C80CA623823361002C3E71 /* AppCoordinator.swift */; };
+		82C80CAB238234DE002C3E71 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C80CAA238234DE002C3E71 /* Coordinator.swift */; };
+		82C80CAD2382D9D7002C3E71 /* GifListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C80CAC2382D9D7002C3E71 /* GifListCoordinator.swift */; };
+		82C80CAF23837BBD002C3E71 /* GifDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C80CAE23837BBD002C3E71 /* GifDetailConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +108,10 @@
 		827A81792374FBD600BCA47F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		827A817A2378F4E100BCA47F /* ModelLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLayer.swift; sourceTree = "<group>"; };
 		82C80C5E2380FC2E002C3E71 /* GifListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifListConfigurator.swift; sourceTree = "<group>"; };
+		82C80CA623823361002C3E71 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		82C80CAA238234DE002C3E71 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		82C80CAC2382D9D7002C3E71 /* GifListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifListCoordinator.swift; sourceTree = "<group>"; };
+		82C80CAE23837BBD002C3E71 /* GifDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailConfigurator.swift; sourceTree = "<group>"; };
 		A1BA20CA68E5A0D75514C1E2 /* Pods-GiphyMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiphyMVP.debug.xcconfig"; path = "Target Support Files/Pods-GiphyMVP/Pods-GiphyMVP.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0E37F3FC98346B79D46FEB /* Pods_GiphyMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiphyMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				822BEAA523726053009598F1 /* Application */,
+				82C80CA523823345002C3E71 /* Coordinator */,
 				827A81752374391700BCA47F /* Layers */,
 				822BEAA62372620E009598F1 /* Models */,
 				827A816E2374381900BCA47F /* Modules */,
@@ -254,8 +263,9 @@
 		824A7DEA237A3D0100464397 /* GifDetail */ = {
 			isa = PBXGroup;
 			children = (
-				824A7DF0237A3D8B00464397 /* View */,
+				82C80CAE23837BBD002C3E71 /* GifDetailConfigurator.swift */,
 				824A7DEF237A3D8400464397 /* Presenter */,
+				824A7DF0237A3D8B00464397 /* View */,
 			);
 			path = GifDetail;
 			sourceTree = "<group>";
@@ -293,8 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				82C80C5E2380FC2E002C3E71 /* GifListConfigurator.swift */,
-				827A81712374384B00BCA47F /* View */,
+				82C80CAC2382D9D7002C3E71 /* GifListCoordinator.swift */,
 				827A81702374384200BCA47F /* Presenter */,
+				827A81712374384B00BCA47F /* View */,
 			);
 			path = GifsList;
 			sourceTree = "<group>";
@@ -356,6 +367,15 @@
 				827A817A2378F4E100BCA47F /* ModelLayer.swift */,
 			);
 			path = Layers;
+			sourceTree = "<group>";
+		};
+		82C80CA523823345002C3E71 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				82C80CA623823361002C3E71 /* AppCoordinator.swift */,
+				82C80CAA238234DE002C3E71 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		D654C45597B929A144F2E0A0 /* Frameworks */ = {
@@ -598,6 +618,7 @@
 				822BEAC42372E2F8009598F1 /* GifView.swift in Sources */,
 				824A7DEE237A3D7A00464397 /* GifDetailViewPresenter.swift in Sources */,
 				827A81662373FD7800BCA47F /* GifViewProtocol.swift in Sources */,
+				82C80CA723823361002C3E71 /* AppCoordinator.swift in Sources */,
 				827A816D237424FF00BCA47F /* TranslationLayer.swift in Sources */,
 				822BEAB32372AAF4009598F1 /* GifsListPresenter.swift in Sources */,
 				824A7DF4237A3E3600464397 /* GifDetailViewController.swift in Sources */,
@@ -607,15 +628,18 @@
 				824A7DF2237A3DFF00464397 /* GifDetailView.swift in Sources */,
 				822BEAC62372E737009598F1 /* GifViewCell.swift in Sources */,
 				827A815D2373E6E300BCA47F /* FooterRefreshControl.swift in Sources */,
+				82C80CAF23837BBD002C3E71 /* GifDetailConfigurator.swift in Sources */,
 				827A81552373B74300BCA47F /* Strings.swift in Sources */,
 				822BEAAF2372AA50009598F1 /* GifsListView.swift in Sources */,
 				822BEABE2372B242009598F1 /* GiphyPagination.swift in Sources */,
 				824A7DEC237A3D6E00464397 /* GifDetailPresenter.swift in Sources */,
+				82C80CAB238234DE002C3E71 /* Coordinator.swift in Sources */,
 				827A81622373FCD400BCA47F /* GifViewPresenter.swift in Sources */,
 				827A817B2378F4E100BCA47F /* ModelLayer.swift in Sources */,
 				822BEAB12372AAA4009598F1 /* GifsListViewPresenter.swift in Sources */,
 				822BEAB72372B001009598F1 /* Gif.swift in Sources */,
 				822BEABA2372B08E009598F1 /* GiphyResponse.swift in Sources */,
+				82C80CAD2382D9D7002C3E71 /* GifListCoordinator.swift in Sources */,
 				822BEA7623725CEB009598F1 /* AppDelegate.swift in Sources */,
 				822BEAC02372B262009598F1 /* GiphyMeta.swift in Sources */,
 			);

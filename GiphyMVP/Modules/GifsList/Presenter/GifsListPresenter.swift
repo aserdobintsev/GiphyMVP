@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class GifsListPresenter: GifsListViewPresenter {
+    weak var delegate: GifListPresenterDelegate?
     private unowned let view: GifsListView
     private let model: ModelLayer
 
@@ -20,7 +21,7 @@ class GifsListPresenter: GifsListViewPresenter {
         self.view = view
         self.model = model
     }
-    
+
     func getTrending() {
         currentPage = 0
         view.startRefresh()
@@ -63,11 +64,6 @@ class GifsListPresenter: GifsListViewPresenter {
     }
 
     func showDetails(for gif: Gif) {
-        // TODO: extract construction and navigation logic to Router/Coordinator
-        let view = GifDetailViewController.fromStoryboard()
-        let presenter = GifDetailPresenter(view: view, gif: gif)
-        view.presenter = presenter
-        // TODO: bad practice, temporarily here
-        (UIApplication.shared.delegate as? AppDelegate)?.show(view: view)
+        delegate?.didSelect(gif: gif)
     }
 }
