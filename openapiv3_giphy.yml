@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: GiphyAPI
+  description: giphy.com
+  version: 1.0.0
+servers:
+- url: https://api.giphy.com/v1
+tags:
+  - name: giphy
+    description: Giphy api
+paths:
+  /gifs/trending:
+    get:
+      tags:
+        - trending
+      summary: Trending gifs list
+      operationId: trendingGet
+      parameters:
+      - name: api_key
+        in: query
+        description: GIPHY API Key
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: The maximum number of objects to return. Defaults to 25.
+        required: false
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        description: Specifies the starting position of the results. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+      - name: rating
+        in: query
+        description: Filters results by specified rating. If you do not specify a rating, you will receive results from all possible ratings.
+        required: false
+        schema:
+          type: string
+      - name: random_id
+        in: query
+        description: An ID/proxy for a specific user.
+        required: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GifList'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+    ErrorModel:
+      type: object
+      required:
+      - message
+      - code
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+          minimum: 100
+          maximum: 600
+    GifList:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gif'
+    Meta:
+      type: object
+      properties:
+        msg:
+          type: string
+        status:
+          type: integer
+        response_id:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        total_count:
+          type: integer
+        count:
+          type: integer
+    Gif:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+        bitly_url:
+          type: string
+        username:
+          type: string
+        source:
+          type: string
+        trending_datetime:
+          type: string
+        content_url:
+          type: string
+        images:
+          $ref: '#/components/schemas/Images'
+    Images:
+      type: object
+      properties:
+        fixed_height:
+          $ref: '#/components/schemas/Image'
+        fixed_height_still:
+          $ref: '#/components/schemas/Image'
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: string
+        heigh:
+          type: string
+        size:
+          type: string
+        mp4:
+          type: string
+        mp4_size:
+          type: string
+        webp:
+          type: string
+        webp_size:
+          type: string
